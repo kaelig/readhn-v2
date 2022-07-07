@@ -1,10 +1,14 @@
 [[edge_functions]]
-path = "/stories"
-function = "stories"
+	path = "/stories"
+	function = "stories"
 
 [[edge_functions]]
-path = "/"
-function = "render"
+	path = "/render-with-api"
+	function = "render"
+
+[[edge_functions]]
+	path = "/"
+	function = "main"
 
 [build]
   publish = "public/"
