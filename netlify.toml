@@ -1,17 +1,8 @@
-[[edge_functions]]
-	path = "/stories"
-	function = "stories"
-
-[[edge_functions]]
-	path = "/render-with-api"
-	function = "render"
-
-[[edge_functions]]
-	path = "/"
-	function = "main"
+[[redirects]]
+  from = "/"
+  to = "/.netlify/builders/main"
+  status = 200
 
 [build]
-  publish = "public/"
-
-  # Default build command.
-  command = "echo 'default context'"
+    publish = "public"
+    command = "# No build command"

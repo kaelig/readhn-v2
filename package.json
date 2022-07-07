@@ -1,0 +1,29 @@
+{
+	"name": "readhn",
+	"version": "1.0.0",
+	"description": "A Hacker News reader",
+	"main": "server.js",
+	"scripts": {
+		"test": "node --test",
+		"dev": "netlify dev"
+	},
+	"engines": {
+		"node": "18",
+		"npm": "8"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/kaelig/readhn-v2.git"
+	},
+	"author": "Kaelig Deloumeau-Prigent",
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/kaelig/readhn-v2/issues"
+	},
+	"homepage": "https://readhn.netlify.app",
+	"devDependencies": {
+		"@netlify/functions": "1.0.0",
+		"prettier": "2.7.1",
+		"typescript": "4.7.4"
+	}
+}
