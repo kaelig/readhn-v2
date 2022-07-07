@@ -17,3 +17,6 @@
 
 # Local Netlify folder
 .netlify
+
+# nvm
+!.nvmrc
