@@ -1,0 +1,13 @@
+[[edge_functions]]
+path = "/stories"
+function = "stories"
+
+[[edge_functions]]
+path = "/"
+function = "render"
+
+[build]
+  publish = "public/"
+
+  # Default build command.
+  command = "echo 'default context'"

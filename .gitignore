@@ -1,0 +1,16 @@
+# Ignore all hidden dotfiles
+.*
+
+# Allow useful dotfiles
+!/.editorconfig
+!/.gitignore
+
+# Add a .gitkeep file in an empty
+# directory to check it in the repository
+!.gitkeep
+
+# Ignore logs
+*.log
+
+# VS Code settings
+!.vscode
