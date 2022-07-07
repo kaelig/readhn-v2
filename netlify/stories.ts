@@ -92,7 +92,7 @@ function buildStoriesObject({ id, title, time, url, by }: HnStory): Story {
 	return {
 		id,
 		title: startCase(title),
-		relativeTime: relativeTimeFromElapsed(time),
+		relativeTime: relativeTimeFromDates(new Date(time * 1000)),
 		url,
 		by,
 		hostname: new URL(url).hostname,

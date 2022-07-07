@@ -1,8 +1,12 @@
 [[redirects]]
-  from = "/"
-  to = "/.netlify/builders/main"
-  status = 200
+	from = "/"
+	to = "/.netlify/builders/main"
+	status = 200
 
 [build]
-    publish = "public"
-    command = "# No build command"
+	publish = "public"
+	command = "# No build command"
+
+[functions]
+	included_files = ["public/styles.css"]
+  node_bundler = "esbuild"

@@ -1,10 +1,19 @@
+import { readFileSync } from "fs";
+import { resolve } from "path";
 import { builder, Handler } from "@netlify/functions";
 
-import type { Story } from "../../stories";
-import { fetchTopStoriesWithLinks, defaultStoryCount } from "../../stories";
+import type { Story } from "../stories.js";
+import { fetchTopStoriesWithLinks, defaultStoryCount } from "../stories.js";
 
 const main: Handler = async () => {
 	const stories = await fetchTopStoriesWithLinks(defaultStoryCount);
+
+	const css = readFileSync(
+		resolve(__dirname, "..", "..", "public", "styles.css"),
+		{
+			encoding: "utf-8",
+		}
+	);
 
 	const body = /* HTML */ `<!DOCTYPE html>
 		<html lang="en">
@@ -26,7 +35,9 @@ const main: Handler = async () => {
 				/>
 				<link rel="preconnect" href="https://use.typekit.net" />
 				<script src="/app.js" defer></script>
-				<link rel="stylesheet" href="/styles.css" />
+				<style>
+					${css}
+				</style>
 			</head>
 			<body>
 				<h1 class="page-title" id="top-stories">Hacker News Top Stories</h1>
@@ -88,7 +99,7 @@ const main: Handler = async () => {
 										– ${story.by} –
 										<a
 											class="u-faux-block-link__promote u-color-light u-link-no-underline u-link-underline-hover"
-											href="${story.url}"
+											href="https://news.ycombinator.com/item?id=${story.id}"
 											rel="noopener noreferrer"
 											>${story.relativeTime}</a
 										>
