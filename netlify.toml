@@ -8,5 +8,5 @@
 	command = "# No build command"
 
 [functions]
-	included_files = ["public/styles.css"]
+	included_files = ["public/styles.css", "public/app.js"]
   node_bundler = "esbuild"

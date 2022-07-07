@@ -7,13 +7,14 @@ import { fetchTopStoriesWithLinks, defaultStoryCount } from "../stories.js";
 
 const main: Handler = async () => {
 	const stories = await fetchTopStoriesWithLinks(defaultStoryCount);
+	const publicPath = resolve(__dirname, "..", "..", "public");
+	const css = readFileSync(publicPath + "/styles.css", {
+		encoding: "utf-8",
+	});
 
-	const css = readFileSync(
-		resolve(__dirname, "..", "..", "public", "styles.css"),
-		{
-			encoding: "utf-8",
-		}
-	);
+	const script = readFileSync(publicPath + "/app.js", {
+		encoding: "utf-8",
+	});
 
 	const body = /* HTML */ `<!DOCTYPE html>
 		<html lang="en">
@@ -34,7 +35,6 @@ const main: Handler = async () => {
 					href="https://staticinstapaper.s3.amazonaws.com"
 				/>
 				<link rel="preconnect" href="https://use.typekit.net" />
-				<script src="/app.js" defer></script>
 				<style>
 					${css}
 				</style>
@@ -153,6 +153,9 @@ const main: Handler = async () => {
 						>
 					</p>
 				</footer>
+				<script>
+					${script};
+				</script>
 			</body>
 		</html>`;
 
