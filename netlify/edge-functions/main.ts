@@ -31,7 +31,7 @@ export default async (request: Request): Promise<Response> => {
 						href="https://staticinstapaper.s3.amazonaws.com"
 					/>
 					<link rel="preconnect" href="https://use.typekit.net" />
-					<script src="/app.js" async></script>
+					<script src="/app.js" defer></script>
 					<link rel="stylesheet" href="/styles.css" />
 				</head>
 				<body>
