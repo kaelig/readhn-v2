@@ -1,16 +1,6 @@
-import type { Context } from "netlify:edge";
-
 export const defaultStoryCount = 25;
 
-export default async (
-	request: Request,
-	context: Context
-): Promise<Response> => {
-	const searchParams = new URL(request.url).searchParams;
-	const storyCountOverride = searchParams.has("storyCount")
-		? parseInt(searchParams.get("storycount")!, 10)
-		: defaultStoryCount;
-
+export default async (): Promise<Response> => {
 	const stories: Story[] = await fetchTopStoriesWithLinks(defaultStoryCount);
 
 	return new Response(JSON.stringify(stories), {
@@ -29,13 +19,13 @@ function startCase(sentence: string) {
 	return sentence.split(" ").map(capitalizeFirstLetter).join(" ");
 }
 
-async function fetchStory(id: number) {
+function fetchStory(id: number) {
 	return fetch(`https://hacker-news.firebaseio.com/v0/item/${id}.json`).then(
 		(data) => data.json()
 	);
 }
 
-async function fetchTopStoryIds(numberOfStories: number): Promise<number[]> {
+function fetchTopStoryIds(numberOfStories: number): Promise<number[]> {
 	return fetch("https://hacker-news.firebaseio.com/v0/topstories.json")
 		.then((data) => data.json())
 		.then((topStories) => topStories.slice(0, numberOfStories));
@@ -96,7 +86,7 @@ interface HnStory {
 	by: string;
 }
 
-interface Story {
+export interface Story {
 	id: number;
 	title: string;
 	relativeTime: string;

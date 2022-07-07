@@ -1,16 +1,15 @@
-import type { Context } from "netlify:edge";
-
 import {
 	DOMParser,
 	initParser,
 } from "https://deno.land/x/deno_dom@v0.1.32-alpha/deno-dom-wasm-noinit.ts";
 
-export default async (
-	request: Request,
-	context: Context
-): Promise<Response> => {
+import type { Story } from "./stories.ts";
+
+export default async (request: Request): Promise<Response> => {
 	const storyApi = new URL("/stories", request.url);
-	const stories = await fetch(storyApi).then((data) => data.json());
+	const stories = (await fetch(storyApi).then((data) =>
+		data.json()
+	)) as Story[];
 
 	await initParser();
 
@@ -158,10 +157,13 @@ export default async (
 		"text/html"
 	);
 
-	return new Response("<!DOCTYPE html>" + document.documentElement.outerHTML, {
-		headers: {
-			"content-type": "text/html",
-			"Cache-Control": "s-max-age=300",
-		},
-	});
+	return new Response(
+		"<!DOCTYPE html>" + document!.documentElement!.outerHTML,
+		{
+			headers: {
+				"content-type": "text/html",
+				"Cache-Control": "s-max-age=300",
+			},
+		}
+	);
 };
