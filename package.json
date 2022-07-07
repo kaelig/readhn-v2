@@ -2,7 +2,7 @@
 	"name": "readhn",
 	"version": "1.0.0",
 	"description": "A Hacker News reader",
-	"main": "server.js",
+	"type": "module",
 	"scripts": {
 		"test": "node --test",
 		"dev": "netlify dev"
@@ -25,5 +25,8 @@
 		"@netlify/functions": "1.0.0",
 		"prettier": "2.7.1",
 		"typescript": "4.7.4"
+	},
+	"dependencies": {
+		"node-fetch": "^3.2.6"
 	}
 }

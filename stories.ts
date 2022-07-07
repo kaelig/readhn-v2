@@ -1,3 +1,5 @@
+import fetch from "node-fetch";
+
 export const defaultStoryCount = 25;
 
 function capitalizeFirstLetter(word: string) {
@@ -112,3 +114,5 @@ export async function fetchTopStoriesWithLinks(
 
 	return stories;
 }
+
+export default {};
