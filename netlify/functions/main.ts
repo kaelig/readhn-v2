@@ -1,6 +1,7 @@
 import { readFileSync } from "fs";
 import { resolve } from "path";
 import { builder, Handler } from "@netlify/functions";
+import { minify } from "html-minifier-terser";
 
 import type { Story } from "../stories.js";
 import { fetchTopStoriesWithLinks, defaultStoryCount } from "../stories.js";
@@ -35,6 +36,7 @@ const main: Handler = async () => {
 					href="https://staticinstapaper.s3.amazonaws.com"
 				/>
 				<link rel="preconnect" href="https://use.typekit.net" />
+				<link rel="manifest" href="/manifest-2018-04-16.json" />
 				<style>
 					${css}
 				</style>
@@ -165,7 +167,11 @@ const main: Handler = async () => {
 			"Content-Type": "text/html",
 		},
 		ttl: 60 * 5,
-		body,
+		body: await minify(body, {
+			minifyJS: true,
+			minifyCSS: true,
+			collapseWhitespace: true,
+		}),
 	};
 };
 

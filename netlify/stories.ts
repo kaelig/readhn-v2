@@ -11,21 +11,23 @@ function startCase(sentence: string) {
 	return sentence.split(" ").map(capitalizeFirstLetter).join(" ");
 }
 
-function fetchStory(id: number) {
+async function fetchStory(id: number): Promise<HnStory> {
 	return fetch(`https://hacker-news.firebaseio.com/v0/item/${id}.json`).then(
-		(data) => data.json()
+		(data) => data.json() as Promise<HnStory>
 	);
 }
 
-function fetchTopStoryIds(numberOfStories: number): Promise<number[]> {
+async function fetchTopStoryIds(numberOfStories: number): Promise<number[]> {
 	return fetch("https://hacker-news.firebaseio.com/v0/topstories.json")
-		.then((data) => data.json())
+		.then((data) => data.json() as Promise<number[]>)
 		.then((topStories) => topStories.slice(0, numberOfStories));
 }
 
 // On Hacker News, some stories are comment threads
 // and other stories are external "actual" stories
-function isActualStory(story: Story) {
+// Not a story: https://hacker-news.firebaseio.com/v0/item/32083653.json
+// Actual story: https://hacker-news.firebaseio.com/v0/item/32084617.json
+function isActualStory(story: HnStory) {
 	return !!story.url;
 }
 
@@ -71,11 +73,16 @@ export function relativeTimeFromElapsed(elapsed: number): string {
 }
 
 interface HnStory {
+	by: string;
+	descendants: number;
 	id: number;
 	title: string;
 	time: number;
-	url: string;
-	by: string;
+	kids: number[];
+	score: number;
+	type: "story";
+	url?: string;
+	text?: string;
 }
 
 export interface Story {
@@ -93,12 +100,12 @@ function buildStoriesObject({ id, title, time, url, by }: HnStory): Story {
 		id,
 		title: startCase(title),
 		relativeTime: relativeTimeFromDates(new Date(time * 1000)),
-		url,
+		url: url!,
 		by,
-		hostname: new URL(url).hostname,
-		instapaperUrl: isExcludedFromInstapaper(url)
-			? url
-			: `https://www.instapaper.com/text?u=${encodeURIComponent(url)}`,
+		hostname: new URL(url!).hostname,
+		instapaperUrl: isExcludedFromInstapaper(url!)
+			? url!
+			: `https://www.instapaper.com/text?u=${encodeURIComponent(url!)}`,
 	};
 }
 
