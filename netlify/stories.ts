@@ -1,6 +1,6 @@
 import fetch from "node-fetch";
 
-export const defaultStoryCount = 25;
+export const defaultStoryCount = 50;
 
 function capitalizeFirstLetter(word: string) {
 	return word.charAt(0).toUpperCase() + word.slice(1);
