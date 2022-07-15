@@ -1,8 +1,8 @@
-# [www.read.hn](https://www.read.hn) [![CircleCI](https://circleci.com/gh/kaelig/readhn.svg?style=shield)](https://circleci.com/gh/kaelig/readhn) [![Greenkeeper badge](https://badges.greenkeeper.io/kaelig/readhn.svg)](https://greenkeeper.io/)
+# [www.read.hn](https://www.read.hn) [![Netlify Status](https://api.netlify.com/api/v1/badges/83249684-7769-4462-8076-4b209d7e8b85/deploy-status)](https://app.netlify.com/sites/readhn/deploys)
 
 A simple, fast, and accessible Hacker News top stories reader.
 
-- Shows the top 25 links from Hacker News
+- Shows the top 50 links from Hacker News
 - Opens stories in [Instapaper](https://www.instapaper.com/) (free and great for reading stories on both mobile and desktop)
 - Supports keyboard navigation
 - Shows clearly which stories you've already read
@@ -63,8 +63,8 @@ Commit your changes in a clear an concise manner, then push your changes and ope
 
 ---
 
-## Deploy to Heroku
+## Deploy to Netlify
 
-Deploy your own Hacker News reader for free to [Heroku](https://www.heroku.com) in only 2 clicks.
+Deploy your own Hacker News reader for free to [Netlify](https://www.netlify.com) in only 2 clicks.
 
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
+[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/kaelig/readhn-v2)
