@@ -114,7 +114,7 @@ const main: Handler = async () => {
 				<footer class="page-footer u-color-light">
 					<p>
 						<a
-							href="https://github.com/kaelig/readhn/blob/master/README.md#why-do-stories-open-in-instapaper"
+							href="https://github.com/kaelig/readhn-v2/blob/master/README.md#why-do-stories-open-in-instapaper"
 							rel="noopener noreferrer"
 							>Why do I need an Instapaper account?</a
 						>
@@ -148,9 +148,11 @@ const main: Handler = async () => {
 						</dl>
 					</div>
 					<p>
-						<a href="https://github.com/kaelig/readhn">Contribute on GitHub</a>
+						<a href="https://github.com/kaelig/readhn-v2"
+							>View source on GitHub</a
+						>
 						—
-						<a href="https://github.com/kaelig/readhn/issues"
+						<a href="https://github.com/kaelig/readhn-v2/issues"
 							>Report an issue</a
 						>
 					</p>
