@@ -37,6 +37,7 @@
 a {
 	text-decoration-thickness: 1px;
   text-underline-offset: 2px;
+  text-decoration-color: color-mix(in srgb, currentColor, transparent 30%);
 }
 
 html {
